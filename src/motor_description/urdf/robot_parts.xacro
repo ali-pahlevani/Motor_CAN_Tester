@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Base link (vertical shaft fixed to the ground) -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.1667" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.3333"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1667" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.3333"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.0056" ixy="0" ixz="0" iyy="0.0056" iyz="0" izz="0.00125"/>
+    </inertial>
+  </link>
+
+  <!-- Wheel link (larger cylinder on top) -->
+  <link name="wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.2" length="0.1"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.3" length="0.06"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0038" ixy="0" ixz="0" iyy="0.0038" iyz="0" izz="0.0225"/>
+    </inertial>
+  </link>
+
+  <!-- Continuous joint between base and wheel -->
+  <joint name="shaft_to_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_link"/>
+    <origin xyz="0 0 0.3333" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="50" effort="0"/>
+    <dynamics damping="0.1" friction="0.0"/>
+  </joint>
+
+  <!-- Fix base_link to the world -->
+  <link name="world"/>
+  <joint name="base_to_world" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

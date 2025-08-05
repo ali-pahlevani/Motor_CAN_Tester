@@ -1,0 +1,52 @@
+options:
+  dcf_path: "@BUS_CONFIG_PATH@"
+
+master:
+  node_id: 1
+  driver: "ros2_canopen::MasterDriver"
+  package: "canopen_master_driver"
+  sync_period: 10000  # 10 ms sync period
+
+steering_motor:
+  node_id: 2
+  dcf: "Kinco_FD_20250417_V1.2.eds"
+  driver: "ros2_canopen::Cia402Driver"
+  package: "canopen_402_driver"
+  period: 10
+  revision_number: 0
+  sdo:
+    - {index: 0x6060, sub_index: 0, value: 1}  # Profile Position Mode
+    - {index: 0x6098, sub_index: 0, value: 1}  # Homing method
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - {index: 0x6041, sub_index: 0}  # Statusword
+        - {index: 0x6061, sub_index: 0}  # Mode of Operation Display
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - {index: 0x6064, sub_index: 0}  # Actual Position
+        - {index: 0x606C, sub_index: 0}  # Actual Velocity
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - {index: 0x6041, sub_index: 0}  # Forklift Target Reached Bit
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      mapping:
+        - {index: 0x6040, sub_index: 0}  # Controlword
+        - {index: 0x6060, sub_index: 0}  # Mode of Operation
+    2:
+      enabled: true
+      cob_id: "auto"
+      mapping:
+        - {index: 0x607A, sub_index: 0}  # Target Position

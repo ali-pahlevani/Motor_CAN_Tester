@@ -1,0 +1,26 @@
+<package format="3">
+  <name>motor_control</name>
+  <version>0.0.1</version>
+  <description>Robot control package</description>
+
+  <maintainer email="a.pahlevani1998@gmail.com">Ali Pahlevani</maintainer>
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>ament_index_cpp</depend>
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>xacro</depend>
+  <depend>canopen_core</depend>
+  <depend>canopen_interfaces</depend>
+  <depend>canopen_base_driver</depend>
+  <depend>canopen_proxy_driver</depend>
+  <depend>lely_core_libraries</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
