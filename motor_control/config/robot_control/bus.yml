@@ -1,6 +1,5 @@
 options:
   dcf_path: "/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control"
-  #dcf_path: "."
 
 master:
   node_id: 1
@@ -16,13 +15,16 @@ traction_motor:
   period: 10
   revision_number: 0
   sdo:
-    - {index: 0x1017, sub_index: 0, value: 1000}    # Enable heartbeats every 1000 ms
-    - {index: 0x6060, sub_index: 0, value: 3}       # Profile Velocity Mode
-    # - {index: 0x6083, sub_index: 0, value: 5000}  # Acceleration
+    - {index: 0x6040, sub_index: 0, value: 128}  # Reset fault (Controlword bit 7)
+    - {index: 0x1017, sub_index: 0, value: 1000} # Enable heartbeats every 1000 ms (16-bit)
+    - {index: 0x6060, sub_index: 0, value: 3}    # Profile Velocity Mode
+    - {index: 0x6040, sub_index: 0, value: 6}    # Shutdown (transition to Ready to Switch On)
+    - {index: 0x6040, sub_index: 0, value: 7}    # Switch On
+    - {index: 0x6040, sub_index: 0, value: 15}   # Enable Operation
   tpdo:
     1:
       enabled: true
-      cob_id: "auto"
+      cob_id: "auto" 
       transmission: 0x01
       mapping:
         - {index: 0x6041, sub_index: 0}  # Statusword
