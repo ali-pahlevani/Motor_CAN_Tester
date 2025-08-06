@@ -22,7 +22,7 @@
             <state_interface name="velocity"/>
 
             <param name="node_id">2</param>
-            <param name="device_name">wheel_motor</param>
+            <param name="device_name">traction_motor</param>
         </joint>
 
     </ros2_control>

@@ -2,7 +2,7 @@ import os
 import xacro
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
@@ -72,10 +72,13 @@ def generate_launch_description():
         }.items(),
     )
 
+    delayed_controllers = TimerAction(
+        period=5.0,  # seconds after launch
+        actions=[control_node, traction_velocity_controller_spawner, joint_state_broadcaster_spawner]
+    )
+
     return LaunchDescription([
-        control_node,
-        joint_state_broadcaster_spawner,
-        traction_velocity_controller_spawner,
         robot_state_publisher_node,
         slave_node_1,
+        delayed_controllers,
     ])

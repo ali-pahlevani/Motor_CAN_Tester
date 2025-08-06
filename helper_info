@@ -1,8 +1,0 @@
-ros2 run xacro xacro robot_real.urdf.xacro > robot_real.urdf
-
-ros2 topic pub --once /robot_description std_msgs/msg/String "{data: '$(cat robot_real.urdf)'}"
-
-dcfgen --no-strict -r bus.yml
-
-https://opensource.lely.com/canopen/docs/dcf-tools/
-
