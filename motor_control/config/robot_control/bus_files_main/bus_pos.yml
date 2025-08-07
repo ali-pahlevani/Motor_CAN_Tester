@@ -17,11 +17,11 @@ traction_motor:
   boot: true  # Specifies whether the slave will be configured and booted by the master
   enable_lazy_load: true
   polling: false
-  velocity_mode: 1  # Set to Profile Velocity Mode
+  position_mode: 1  # Set to Profile Position Mode
   sdo:
     - {index: 0x6040, sub_index: 0, value: 128}  # Reset fault
     - {index: 0x1017, sub_index: 0, value: 1000} # Enable heartbeats every 1000 ms
-    - {index: 0x6060, sub_index: 0, value: 3}    # Profile Velocity Mode
+    - {index: 0x6060, sub_index: 0, value: 1}    # Profile Position Mode
     - {index: 0x6040, sub_index: 0, value: 6}    # Shutdown
     - {index: 0x6040, sub_index: 0, value: 7}    # Switch On
     - {index: 0x6040, sub_index: 0, value: 15}   # Enable Operation
@@ -55,4 +55,4 @@ traction_motor:
       enabled: true
       cob_id: "auto"
       mapping:
-        - {index: 0x60FF, sub_index: 0}  # Target Velocity
+        - {index: 0x607A, sub_index: 0}  # Target Position

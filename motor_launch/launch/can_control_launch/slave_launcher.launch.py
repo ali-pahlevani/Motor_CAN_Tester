@@ -12,7 +12,6 @@ def generate_launch_description():
 
       ld = launch.LaunchDescription()
 
-
       device_container = IncludeLaunchDescription(
           PythonLaunchDescriptionSource(
               [
