@@ -1,6 +1,6 @@
 options:
-  dcf_path: "/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control"
-  #dcf_path: "@BUS_CONFIG_PATH@"
+  #dcf_path: "/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control"
+  dcf_path: "@BUS_CONFIG_PATH@"
 
 master:
   node_id: 1

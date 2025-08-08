@@ -17,7 +17,7 @@ find_package(canopen_base_driver REQUIRED)
 find_package(canopen_proxy_driver REQUIRED)
 find_package(lely_core_libraries REQUIRED)
 
-#cogen_dcf(robot_control)
+cogen_dcf(robot_control)
 
 # Install config files
 install(
