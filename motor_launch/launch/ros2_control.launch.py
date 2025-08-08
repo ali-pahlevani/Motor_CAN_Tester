@@ -73,7 +73,7 @@ def generate_launch_description():
     )
 
     delayed_controllers = TimerAction(
-        period=5.0,  # seconds after launch
+        period=0.0,  # seconds after launch
         actions=[control_node, traction_velocity_controller_spawner, joint_state_broadcaster_spawner]
     )
 
