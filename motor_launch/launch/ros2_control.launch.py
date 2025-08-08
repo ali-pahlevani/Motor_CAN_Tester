@@ -79,6 +79,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         robot_state_publisher_node,
-        slave_node_1,
+        #slave_node_1,
         delayed_controllers,
     ])
