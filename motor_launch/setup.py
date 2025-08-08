@@ -11,8 +11,6 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch/can_control_launch', ['launch/can_control_launch/slave_launcher.launch.py']),
         ('share/' + package_name + '/launch', ['launch/ros2_control.launch.py']),
-        ('share/' + package_name + '/launch', ['launch/ros2_control_prev.launch.py']),
-        ('share/' + package_name + '/launch', ['launch/urdf_test.launch.py']),
         ('share/' + package_name + '/rviz', ['rviz/robot_view.rviz']),
     ],
     install_requires=['setuptools'],
