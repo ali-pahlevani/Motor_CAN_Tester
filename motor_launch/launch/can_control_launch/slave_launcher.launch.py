@@ -36,7 +36,7 @@ def generate_launch_description():
                   get_package_share_directory("motor_control"),
                   "config",
                   "robot_control",
-                  "bus.yml",
+                  "preprocessed_bus.yml",
               ),
               "can_interface_name": "can0",
           }.items(),

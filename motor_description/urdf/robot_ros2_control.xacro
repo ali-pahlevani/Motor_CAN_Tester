@@ -6,7 +6,7 @@
             <!-- <plugin>canopen_ros2_control/RobotSystem</plugin> -->
             <!-- <plugin>canopen_ros2_control/CANopenSystem</plugin> -->
 
-            <param name="bus_config">$(find motor_control)/config/robot_control/bus.yml</param>
+            <param name="bus_config">$(find motor_control)/config/robot_control/preprocessed_bus.yml</param>
             <param name="master_config">$(find motor_control)/config/robot_control/master.dcf</param>
             <param name="can_interface_name">can0</param>
             <param name="master_bin"></param>
