@@ -7,8 +7,7 @@
         parent
         *origin
         " >
-
-
+        
     <link name="${prefix}link1">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
