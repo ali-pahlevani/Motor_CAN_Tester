@@ -7,7 +7,8 @@ master:
   package: "canopen_master_driver"
   sync_period: 10000
 
-defaults:
+joint_1:
+  node_id: 2
   dcf: "Kinco_FD_20250417_V1.2.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
@@ -47,7 +48,3 @@ defaults:
       cob_id: "auto"
       mapping:
       - {index: 0x607A, sub_index: 0} # target position
-
-nodes:
-  joint_1:
-    node_id: 2
