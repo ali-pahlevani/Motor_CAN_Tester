@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <ros2_control name="RealRobot" type="system">
         <hardware>
-            <!-- <plugin>canopen_ros2_control/Cia402System</plugin> -->
-            <plugin>canopen_ros2_control/RobotSystem</plugin>
+            <plugin>canopen_ros2_control/Cia402System</plugin>
+            <!-- <plugin>canopen_ros2_control/RobotSystem</plugin> -->
             <!-- <plugin>canopen_ros2_control/CANopenSystem</plugin> -->
 
             <param name="bus_config">$(find motor_control)/config/robot_control/bus.yml</param>
