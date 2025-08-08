@@ -13,15 +13,15 @@
         </hardware>
 
         <joint name="shaft_to_wheel">
-            <command_interface name="velocity">
+            <!--<command_interface name="velocity">
                 <param name="min">-50</param>
                 <param name="max">50</param>
-            </command_interface>
+            </command_interface> -->
             
-            <state_interface name="position"/>
+            <!-- <state_interface name="position"/> -->
             <state_interface name="velocity"/>
 
-            <param name="node_id">2</param>
+            <!-- <param name="node_id">2</param> -->
             <param name="device_name">traction_motor</param>
         </joint>
 
