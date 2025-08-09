@@ -29,7 +29,6 @@ BaudRate_1000=1
 SimpleBootUpMaster=0
 SimpleBootUpSlave=1
 Granularity=8
-DynamicChannelsSupported=0
 CompactPDO=0
 GroupMessaging=0
 NrOfRXPDO=8
@@ -3671,7 +3670,7 @@ ParameterName=Number of entries
 ObjectType=0x7
 DataType=0x0005
 AccessType=ro
-DefaultValue=31
+DefaultValue=6
 PDOMapping=0
 LowLimit=0x02
 HighLimit=0x06
@@ -4425,5 +4424,3 @@ AccessType=rw
 PDOMapping=0
 ObjFlags=0
 
-[DynamicChannels]
-NrOfSeg=0
