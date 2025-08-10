@@ -18,10 +18,10 @@ traction_motor:
   boot: true  # Specifies whether the slave will be configured and booted by the master
   enable_lazy_load: true
   polling: false
-  scale_pos_to_dev: 1591.5494  # 10000 counts / (2π rad)
-  scale_pos_from_dev: 0.000628318  # (2π rad) / 10000 counts
-  scale_vel_to_dev: 9.5493  # rad/s to RPM
-  scale_vel_from_dev: 0.104719  # RPM to rad/s
+  scale_pos_to_dev: 1   #1591.5494  # 10000 counts / (2π rad) (to be set correctly)
+  scale_pos_from_dev: 1 #0.000628318  # (2π rad) / 10000 counts (to be set correctly)
+  scale_vel_to_dev: 1   #9.5493  # rad/s to RPM (to be set correctly)
+  scale_vel_from_dev: 1 #0.104719  # RPM to rad/s (to be set correctly)
   velocity_mode: 1  # Set to Profile Velocity Mode
   sdo:
     - {index: 0x6040, sub_index: 0, value: 128}  # Reset fault
