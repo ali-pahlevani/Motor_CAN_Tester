@@ -1195,7 +1195,7 @@ CompactSubObj=127
 ParameterName=Boot time
 DataType=0x0007
 AccessType=rw
-DefaultValue=500
+DefaultValue=2000
 
 [1F8A]
 ParameterName=Restore configuration
