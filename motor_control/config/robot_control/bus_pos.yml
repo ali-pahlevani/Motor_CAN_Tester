@@ -7,7 +7,7 @@ master:
   driver: "ros2_canopen::MasterDriver"
   package: "canopen_master_driver"
   sync_period: 10000  # 10 ms sync period
-  boot_time: 500  # Timeout for booting mandatory slaves in ms
+  boot_time: 2000  # Timeout for booting mandatory slaves in ms
 
 steering_motor:
   node_id: 2
@@ -25,16 +25,11 @@ steering_motor:
   position_mode: 1
   sdo:
     - {index: 0x6040, sub_index: 0, value: 128}  # Reset fault
-    - {index: 0x1017, sub_index: 0, value: 1000} # Enable heartbeats every 1000 ms
+    - {index: 0x1017, sub_index: 0, value: 1000} # Enable heartbeats
     - {index: 0x6060, sub_index: 0, value: 1}    # Profile Position Mode
     - {index: 0x6040, sub_index: 0, value: 6}    # Shutdown
     - {index: 0x6040, sub_index: 0, value: 7}    # Switch On
     - {index: 0x6040, sub_index: 0, value: 15}   # Enable Operation
-    - {index: 0x6098, sub_index: 0, value: 1}    # Homing method
-    - {index: 0x6081, sub_index: 0, value: 10}   # Profile velocity
-    - {index: 0x6083, sub_index: 0, value: 200}  # Set acceleration
-    - {index: 0x6084, sub_index: 0, value: 500}  # Set deceleration
-    - {index: 0x6085, sub_index: 0, value: 50}   # Set quickstop deceleration
   tpdo:
     1:
       enabled: true
