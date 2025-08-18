@@ -18,8 +18,8 @@ steering_motor:
   boot: true
   enable_lazy_load: true
   polling: false
-  scale_pos_to_dev: 2607.5946
-  scale_pos_from_dev: 0.0003835
+  scale_pos_to_dev: 1 #2607.5946
+  scale_pos_from_dev: 1 #0.0003835
   scale_vel_to_dev: 26075.946
   scale_vel_from_dev: 0.00003835
   position_mode: 1
