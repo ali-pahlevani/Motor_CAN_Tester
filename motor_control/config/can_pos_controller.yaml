@@ -27,7 +27,7 @@ steering_position_controller:
       goal_time: 0.5  # Max time (seconds) to reach the goal
       base_to_plate:
         goal: 0.01  # Position tolerance (meters or radians)
-        trajectory: 0.01  # Trajectory tolerance during motion
+        trajectory: 0.1  # Trajectory tolerance during motion
 
 
 #steering_position_controller:
