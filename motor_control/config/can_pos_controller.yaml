@@ -2,38 +2,38 @@ controller_manager:
   ros__parameters:
     update_rate: 100
 
-    #steering_position_controller:
-    #  type: joint_trajectory_controller/JointTrajectoryController
-
     steering_position_controller:
-      type: position_controllers/JointGroupPositionController
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    #steering_position_controller:
+    #  type: position_controllers/JointGroupPositionController
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
-
-#steering_position_controller:
-#  ros__parameters:
-#    joints:
-#      - base_to_plate
-#    command_interfaces:
-#      - position
-#    state_interfaces:
-#      - position
-#      - velocity
-#    state_publish_rate: 100.0
-#    action_monitor_rate: 20.0
-#    allow_partial_joints_goal: true
-#    constraints:
-#      goal_time: 0.5  # Max time (seconds) to reach the goal
-#      base_to_plate:
-#        goal: 0.01  # Position tolerance (meters or radians)
-#        trajectory: 0.01  # Trajectory tolerance during motion
-
 
 steering_position_controller:
   ros__parameters:
     joints:
       - base_to_plate
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: true
+    constraints:
+      goal_time: 0.5  # Max time (seconds) to reach the goal
+      base_to_plate:
+        goal: 0.01  # Position tolerance (meters or radians)
+        trajectory: 0.01  # Trajectory tolerance during motion
+
+
+#steering_position_controller:
+#  ros__parameters:
+#    joints:
+#      - base_to_plate
 
 
 joint_state_broadcaster:
