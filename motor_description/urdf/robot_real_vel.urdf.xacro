@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Include robot parts -->
+    <xacro:include filename="robot_parts_vel.xacro"/>
+
+    <!-- Include ros2_control configuration -->
+    <xacro:include filename="robot_ros2_control_vel.xacro"/>
+
+</robot>

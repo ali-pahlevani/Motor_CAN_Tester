@@ -11,7 +11,7 @@ def generate_launch_description():
     urdf_xacro_path = os.path.join(
         get_package_share_directory('motor_description'),
         'urdf',
-        'robot_real.urdf.xacro'
+        'robot_real_vel.urdf.xacro'
     )
     processed_urdf = xacro.process_file(urdf_xacro_path).toxml()
     robot_description = {"robot_description": processed_urdf}
@@ -19,7 +19,7 @@ def generate_launch_description():
     robot_control_config_path = os.path.join(
         get_package_share_directory('motor_control'),
         'config',
-        'can_controller.yaml'
+        'can_vel_controller.yaml'
     )
 
     slave_launch_path = os.path.join(

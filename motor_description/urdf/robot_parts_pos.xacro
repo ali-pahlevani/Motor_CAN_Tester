@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot name="plate_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Base link (vertical plate fixed to the ground) -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.3 1.0"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.3 1.0"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.0833" ixy="0" ixz="0" iyy="0.0271" iyz="0" izz="0.0833"/>
+    </inertial>
+  </link>
+
+  <!-- Moving plate link (vertical plate sliding up and down) -->
+  <link name="moving_plate_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.3 1.0"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.3 1.0"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.0417" ixy="0" ixz="0" iyy="0.0135" iyz="0" izz="0.0417"/>
+    </inertial>
+  </link>
+
+  <!-- Prismatic joint between base and moving plate -->
+  <joint name="base_to_plate" type="prismatic">
+    <parent link="base_link"/>
+    <child link="moving_plate_link"/>
+    <origin xyz="0.11 0 0.5" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.2" velocity="1.0" effort="100"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- Fix base_link to the world -->
+  <link name="world"/>
+  <joint name="base_to_world" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

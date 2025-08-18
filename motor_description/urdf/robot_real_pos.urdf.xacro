@@ -2,9 +2,9 @@
 <robot name="wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- Include robot parts -->
-    <xacro:include filename="robot_parts.xacro"/>
+    <xacro:include filename="robot_parts_pos.xacro"/>
 
     <!-- Include ros2_control configuration -->
-    <xacro:include filename="robot_ros2_control.xacro"/>
+    <xacro:include filename="robot_ros2_control_pos.xacro"/>
 
 </robot>
