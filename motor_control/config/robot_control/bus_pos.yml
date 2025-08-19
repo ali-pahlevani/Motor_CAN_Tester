@@ -19,13 +19,13 @@ steering_motor:
   enable_lazy_load: true
   polling: false
 
-  # fork (assuming 1 motor rev for going from 0 to 1.2 m)
-  scale_pos_to_dev: 8333.3333 #old: 2607.5946
-  scale_pos_from_dev: 0.00012 #old: 0.0003835
+  # fork positioning
+  scale_pos_to_dev: 13986013.9860 #(increments per meter) | old: 2607.5946
+  scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
 
-  # steering wheel (assuming 1 motor rev for going from -pi to pi rad)
-  #scale_pos_to_dev: 1591.5494 #old: 2607.5946
-  #scale_pos_from_dev: 0.0006283 #old: 0.0003835
+  # steering wheel positioning
+  #scale_pos_to_dev: 292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
+  #scale_pos_from_dev: 0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
 
   scale_vel_to_dev: 26075.946
   scale_vel_from_dev: 0.00003835
