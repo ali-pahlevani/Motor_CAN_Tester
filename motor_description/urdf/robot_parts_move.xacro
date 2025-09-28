@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot name="steerable_wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- World link -->
+  <link name="world"/>
+
+  <!-- Vertical cylinder link -->
+  <link name="cylinder_link">
+    <visual>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="1.0"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="1.0"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <inertia ixx="0.0834375" ixy="0" ixz="0" iyy="0.0834375" iyz="0" izz="0.00125"/>
+    </inertial>
+  </link>
+
+  <!-- Wheel link (cylinder for traction) -->
+  <link name="wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.0002667" ixy="0" ixz="0" iyy="0.0002667" iyz="0" izz="0.0002"/>
+    </inertial>
+  </link>
+
+  <!-- Revolute joint for steering (-90 to 90 degrees) -->
+  <joint name="steer_joint" type="revolute">
+    <parent link="world"/>
+    <child link="cylinder_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5708" upper="1.5708" velocity="1.0" effort="50"/>
+    <dynamics damping="0.05" friction="0.05"/>
+  </joint>
+
+  <!-- Continuous joint for wheel traction -->
+  <joint name="trac_joint" type="continuous">
+    <parent link="cylinder_link"/>
+    <child link="wheel_link"/>
+    <origin xyz="0 0 1.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <dynamics damping="0.01" friction="0.01"/>
+  </joint>
+</robot>

@@ -1,0 +1,55 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    tri_cycle_controller:
+      type: tricycle_controller/TricycleController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+tri_cycle_controller:
+  ros__parameters:
+
+    publish_rate: 100.0
+
+    base_frame_id: base_link
+    odom_frame_id: odom
+    enable_odom_tf: true
+    
+    use_stamped_vel: false #(default: true)
+    open_loop: false
+
+    traction_joint_name: "trac_joint"
+    steering_joint_name: "steer_joint"
+    wheelbase: 1.10
+    wheel_radius: 0.124
+
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
+
+    #odom_only_twist: true
+
+    # Rate Limiting
+    traction: # All values should be positive
+      # min_velocity: 0.0
+      # max_velocity: 1000.0
+      # min_acceleration: 0.0
+      max_acceleration: 5.0
+      # min_deceleration: 0.0
+      max_deceleration: 8.0
+      # min_jerk: 0.0
+      # max_jerk: 1000.0
+    steering:
+      min_position: -1.57
+      max_position: 1.57
+      # min_velocity: 0.0
+      max_velocity: 1.4
+      # min_acceleration: 0.0
+      # max_acceleration: 1000.0
+
+joint_state_broadcaster:
+  ros__parameters:
+    joints:
+      - trac_joint
+      - steer_joint
