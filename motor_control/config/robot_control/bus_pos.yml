@@ -10,7 +10,7 @@ master:
   boot_time: 500  # Timeout for booting mandatory slaves in ms
 
 steering_motor:
-  node_id: 2
+  node_id: 3
   dcf: "Kinco_FD_20250417_V1.2.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
