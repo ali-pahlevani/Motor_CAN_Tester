@@ -23,7 +23,7 @@
             <state_interface name="position"/>
             <state_interface name="velocity"/>
 
-            <param name="node_id">2</param>
+            <param name="node_id">3</param>
             <param name="device_name">steering_motor</param>
         </joint>
 

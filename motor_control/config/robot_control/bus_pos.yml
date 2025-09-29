@@ -10,7 +10,7 @@ master:
   boot_time: 500  # Timeout for booting mandatory slaves in ms
 
 steering_motor:
-  node_id: 2
+  node_id: 3
   dcf: "Kinco_FD_20250417_V1.2.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
@@ -20,12 +20,12 @@ steering_motor:
   polling: false
 
   # fork positioning
-  scale_pos_to_dev: 13986013.9860 #(increments per meter) | old: 2607.5946
-  scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
+  #scale_pos_to_dev: 13986013.9860 #(increments per meter) | old: 2607.5946
+  #scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
 
   # steering wheel positioning
-  #scale_pos_to_dev: 292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
-  #scale_pos_from_dev: 0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
+  scale_pos_to_dev: 292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
+  scale_pos_from_dev: 0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
 
   scale_vel_to_dev: 26075.946
   scale_vel_from_dev: 0.00003835
