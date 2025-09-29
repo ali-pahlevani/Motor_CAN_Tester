@@ -18,11 +18,6 @@
         <box size="0.4 0.4 0.2"/>
       </geometry>
     </collision>
-    <inertial>
-      <mass value="2.0"/>
-      <origin xyz="0 0 1.15" rpy="0 0 0"/>
-      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
-    </inertial>
   </link>
 
   <!-- Shaft (vertical cylinder) -->
