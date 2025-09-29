@@ -479,7 +479,7 @@ AccessType=ro
 ParameterName=Node-ID 2
 DataType=0x000F
 AccessType=ro
-UploadFile=/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control/steering_motor.bin
+UploadFile=/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control/traction_motor.bin
 
 [1F22sub3]
 ParameterName=Node-ID 3
@@ -1219,13 +1219,13 @@ AccessType=const
 DefaultValue=2
 
 [2000sub1]
-ParameterName=steering_motor: Statusword
+ParameterName=traction_motor: Statusword
 DataType=0x0006
 AccessType=rww
 PDOMapping=1
 
 [2000sub2]
-ParameterName=steering_motor: Operation_Mode_Buff
+ParameterName=traction_motor: Operation_Mode_Buff
 DataType=0x0002
 AccessType=rww
 PDOMapping=1
@@ -1242,13 +1242,13 @@ AccessType=const
 DefaultValue=2
 
 [2001sub1]
-ParameterName=steering_motor: Position_actual_value
+ParameterName=traction_motor: Position_actual_value
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
 
 [2001sub2]
-ParameterName=steering_motor: speed_real
+ParameterName=traction_motor: speed_real
 DataType=0x0004
 AccessType=rww
 PDOMapping=1
@@ -1265,13 +1265,13 @@ AccessType=const
 DefaultValue=2
 
 [2200sub1]
-ParameterName=steering_motor: Controlword
+ParameterName=traction_motor: Controlword
 DataType=0x0006
 AccessType=rwr
 PDOMapping=1
 
 [2200sub2]
-ParameterName=steering_motor: Modes_of_operation
+ParameterName=traction_motor: Modes_of_operation
 DataType=0x0002
 AccessType=rwr
 PDOMapping=1
@@ -1288,7 +1288,7 @@ AccessType=const
 DefaultValue=1
 
 [2201sub1]
-ParameterName=steering_motor: Target_position
+ParameterName=traction_motor: Target_velocity
 DataType=0x0004
 AccessType=rwr
 PDOMapping=1
@@ -1362,4 +1362,4 @@ CompactSubObj=1
 
 [5E01Value]
 NrOfEntries=1
-1=0x607A0020
+1=0x60FF0020
