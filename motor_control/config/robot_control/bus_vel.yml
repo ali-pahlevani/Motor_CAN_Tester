@@ -22,8 +22,8 @@ traction_motor:
   scale_pos_to_dev: 2607.5946
   scale_pos_from_dev: 0.0003835
   
-  scale_vel_to_dev: 599746.758 # considering gear ratio (1:23)
-  scale_vel_from_dev: 0.000001667 # considering gear ratio (1:23)
+  scale_vel_to_dev: 428390.541428 # considering gear ratio to multiply (1:23) (and experimental 1.4 ratio to divide)
+  scale_vel_from_dev: 0.000002334 # considering gear ratio to multiply (1:23) (and experimental 1.4 ratio to divide)
   
   #scale_vel_to_dev: 26075.946
   #scale_vel_from_dev: 0.00003835
