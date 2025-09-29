@@ -223,7 +223,7 @@ CompactSubObj=127
 
 [1028Value]
 NrOfEntries=1
-3=0x00000083
+2=0x00000082
 
 [1029]
 ParameterName=Error behavior object
@@ -257,7 +257,7 @@ DefaultValue=5
 ParameterName=COB-ID used by RPDO
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000183
+DefaultValue=0x00000182
 
 [1400sub2]
 ParameterName=transmission type
@@ -296,7 +296,7 @@ DefaultValue=5
 ParameterName=COB-ID used by RPDO
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000283
+DefaultValue=0x00000282
 
 [1401sub2]
 ParameterName=transmission type
@@ -359,7 +359,7 @@ DefaultValue=6
 ParameterName=COB-ID used by TPDO
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000203
+DefaultValue=0x00000202
 
 [1800sub2]
 ParameterName=transmission type
@@ -405,7 +405,7 @@ DefaultValue=6
 ParameterName=COB-ID used by TPDO
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000303
+DefaultValue=0x00000302
 
 [1801sub2]
 ParameterName=transmission type
@@ -479,12 +479,12 @@ AccessType=ro
 ParameterName=Node-ID 2
 DataType=0x000F
 AccessType=ro
+UploadFile=/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control/steering_motor.bin
 
 [1F22sub3]
 ParameterName=Node-ID 3
 DataType=0x000F
 AccessType=ro
-UploadFile=/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control/steering_motor.bin
 
 [1F22sub4]
 ParameterName=Node-ID 4
@@ -1135,7 +1135,7 @@ CompactSubObj=127
 
 [1F81Value]
 NrOfEntries=1
-3=0x00000005
+2=0x00000005
 
 [1F82]
 ParameterName=Request NMT
@@ -1153,7 +1153,7 @@ CompactSubObj=127
 
 [1F84Value]
 NrOfEntries=1
-3=0x00020192
+2=0x00020192
 
 [1F85]
 ParameterName=Vendor identification
@@ -1164,7 +1164,7 @@ CompactSubObj=127
 
 [1F85Value]
 NrOfEntries=1
-3=0x00000300
+2=0x00000300
 
 [1F86]
 ParameterName=Product code
@@ -1175,7 +1175,7 @@ CompactSubObj=127
 
 [1F86Value]
 NrOfEntries=1
-3=0x00004644
+2=0x00004644
 
 [1F87]
 ParameterName=Revision_number
@@ -1297,13 +1297,13 @@ PDOMapping=1
 ParameterName=Remote TPDO number and node-ID
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000103
+DefaultValue=0x00000102
 
 [5801]
 ParameterName=Remote TPDO number and node-ID
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000203
+DefaultValue=0x00000202
 
 [5A00]
 ParameterName=Remote TPDO mapping parameter
@@ -1333,13 +1333,13 @@ NrOfEntries=2
 ParameterName=Remote RPDO number and node-ID
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000103
+DefaultValue=0x00000102
 
 [5C01]
 ParameterName=Remote RPDO number and node-ID
 DataType=0x0007
 AccessType=rw
-DefaultValue=0x00000203
+DefaultValue=0x00000202
 
 [5E00]
 ParameterName=Remote RPDO mapping parameter
