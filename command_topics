@@ -1,0 +1,5 @@
+- ros2 topic pub --once /traction_velocity_controller/commands std_msgs/msg/Float64MultiArray "data: [3.1415]"  (rad/s) (traction) (node 2)
++ max: 2000 rpm for motor (12.74849 rad/s for the wheel)
+
+
+- 
