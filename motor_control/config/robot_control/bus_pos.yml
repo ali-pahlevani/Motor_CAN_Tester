@@ -37,8 +37,10 @@ steering_motor:
     - {index: 0x6081, sub_index: 0, value: 27306500} # Profile velocity (~ ... RPM) (wheel)
     #- {index: 0x6081, sub_index: 0, value: 2730650} # Profile velocity (~ 1000 RPM) (forks)
     - {index: 0x6098, sub_index: 0, value: 1}     # Homing method
-    - {index: 0x6083, sub_index: 0, value: 20000}   # Set acceleration (200)
-    - {index: 0x6084, sub_index: 0, value: 50000}   # Set deceleration (500)
+    - {index: 0x6083, sub_index: 0, value: 30000}   # Set acceleration (200)
+    - {index: 0x6084, sub_index: 0, value: 60000}   # Set deceleration (500)
+    #- {index: 0x6083, sub_index: 0, value: 200}   # Set acceleration (forks)
+    #- {index: 0x6084, sub_index: 0, value: 500}   # Set deceleration (forks)
     - {index: 0x6085, sub_index: 0, value: 50}    # Set quickstop deceleration
     - {index: 0x6040, sub_index: 0, value: 6}     # Shutdown
     - {index: 0x6040, sub_index: 0, value: 7}     # Switch On
