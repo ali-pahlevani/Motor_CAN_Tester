@@ -24,8 +24,8 @@ steering_motor:
   #scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
 
   # steering wheel positioning
-  scale_pos_to_dev: 292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
-  scale_pos_from_dev: 0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
+  scale_pos_to_dev: 3271863.6623 #292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
+  scale_pos_from_dev: 0.000000306 #0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
 
   scale_vel_to_dev: 26075.946
   scale_vel_from_dev: 0.00003835
