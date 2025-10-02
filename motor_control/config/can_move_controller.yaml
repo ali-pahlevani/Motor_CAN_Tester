@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100
+    update_rate: 30
 
     tri_cycle_controller:
       type: tricycle_controller/TricycleController
@@ -11,7 +11,7 @@ controller_manager:
 tri_cycle_controller:
   ros__parameters:
 
-    publish_rate: 100.0
+    publish_rate: 30.0
 
     base_frame_id: base_link
     odom_frame_id: odom
