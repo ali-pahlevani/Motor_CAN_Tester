@@ -58,8 +58,8 @@ def generate_launch_description():
         package='twist_stamper',
         executable='twist_stamper',
         parameters=[{'use_sim_time': False}],
-        remappings=[{'/cmd_vel_in','/tri_cycle_controller/cmd_vel'},
-                    {'/cmd_vel_out','/tri_cycle_controller/cmd_vel/stamped'}]
+        remappings=[('/cmd_vel_in','/tri_cycle_controller/cmd_vel'),
+                    ('/cmd_vel_out','/tri_cycle_controller/cmd_vel/stamped')]
     )
 
     return LaunchDescription([
