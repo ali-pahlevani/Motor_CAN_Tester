@@ -1,0 +1,25 @@
+belev@raspberrypi:~$ ros2 topic list -v
+Published topics:
+ * /dynamic_joint_states [control_msgs/msg/DynamicJointState] 1 publisher
+ * /joint_state_broadcaster/transition_event [lifecycle_msgs/msg/TransitionEvent] 1 publisher
+ * /joint_states [sensor_msgs/msg/JointState] 1 publisher
+ * /parameter_events [rcl_interfaces/msg/ParameterEvent] 9 publishers
+ * /robot_description [std_msgs/msg/String] 1 publisher
+ * /rosout [rcl_interfaces/msg/Log] 9 publishers
+ * /steering_motor/joint_states [sensor_msgs/msg/JointState] 1 publisher
+ * /steering_motor/nmt_state [std_msgs/msg/String] 1 publisher
+ * /steering_motor/rpdo [canopen_interfaces/msg/COData] 1 publisher
+ * /tf [tf2_msgs/msg/TFMessage] 2 publishers
+ * /tf_static [tf2_msgs/msg/TFMessage] 1 publisher
+ * /traction_motor/joint_states [sensor_msgs/msg/JointState] 1 publisher
+ * /traction_motor/nmt_state [std_msgs/msg/String] 1 publisher
+ * /traction_motor/rpdo [canopen_interfaces/msg/COData] 1 publisher
+ * /tri_cycle_controller/odom [nav_msgs/msg/Odometry] 1 publisher
+ * /tri_cycle_controller/transition_event [lifecycle_msgs/msg/TransitionEvent] 1 publisher
+
+Subscribed topics:
+ * /joint_states [sensor_msgs/msg/JointState] 1 subscriber
+ * /parameter_events [rcl_interfaces/msg/ParameterEvent] 9 subscribers
+ * /steering_motor/tpdo [canopen_interfaces/msg/COData] 1 subscriber
+ * /traction_motor/tpdo [canopen_interfaces/msg/COData] 1 subscriber
+ * /tri_cycle_controller/cmd_vel [geometry_msgs/msg/Twist] 1 subscriber

@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 30
+    update_rate: 50
 
     tri_cycle_controller:
       type: tricycle_controller/TricycleController
@@ -11,7 +11,7 @@ controller_manager:
 tri_cycle_controller:
   ros__parameters:
 
-    publish_rate: 30.0
+    publish_rate: 50.0
 
     base_frame_id: base_link
     odom_frame_id: odom
@@ -22,7 +22,7 @@ tri_cycle_controller:
 
     traction_joint_name: "trac_joint"
     steering_joint_name: "steer_joint"
-    wheelbase: 1.10
+    wheelbase: 0.99 #1.10
     wheel_radius: 0.124
 
     pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.01]
@@ -31,20 +31,20 @@ tri_cycle_controller:
     #odom_only_twist: true
 
     # Rate Limiting
-    traction: # All values should be positive
+    #traction: # All values should be positive
       # min_velocity: 0.0
       # max_velocity: 1000.0
       # min_acceleration: 0.0
-      max_acceleration: 5.0
+      #max_acceleration: 5.0
       # min_deceleration: 0.0
-      max_deceleration: 8.0
+      #max_deceleration: 8.0
       # min_jerk: 0.0
       # max_jerk: 1000.0
     steering:
       min_position: -1.57
       max_position: 1.57
       # min_velocity: 0.0
-      max_velocity: 1.4
+      #max_velocity: 1.4
       # min_acceleration: 0.0
       # max_acceleration: 1000.0
 
