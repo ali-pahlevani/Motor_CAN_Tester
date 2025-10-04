@@ -54,7 +54,16 @@ def generate_launch_description():
         actions=[control_node, tri_cycle_controller_spawner, joint_state_broadcaster_spawner]
     )
 
+    twist_stamper = Node(
+        package='twist_stamper',
+        executable='twist_stamper',
+        parameters=[{'use_sim_time': False}],
+        remappings=[{'/cmd_vel_in','/tri_cycle_controller/cmd_vel'},
+                    {'/cmd_vel_out','/tri_cycle_controller/cmd_vel/stamped'}]
+    )
+
     return LaunchDescription([
         robot_state_publisher_node,
         delayed_controllers,
+        twist_stamper
     ])
