@@ -2,7 +2,7 @@ Nodes:
 
 - ros2 launch motor_launch ros2_control_move.launch.py (plus 6 service calls)
 - ros2 launch pf_driver r2000.launch.py (plus at least 1 service call for lidar frequency)
-- ros2 run tf2_ros static_transform_publisher --x 0.3 --y 0.0 --z 0.9 --qx 0.0 --qy 0.0 --qz 0.0 --qw 1.0 --frame-id base_link --child-frame-id lidar_nav_link (put in launch file)
-- ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap /cmd_vel:=/tri_cycle_controller/cmd_vel
+- ros2 run tf2_ros static_transform_publisher --x 0.037 --y 0.0 --z 0.85 --qx 0.0 --qy 0.0 --qz 0.0 --qw 1.0 --frame-id base_link --child-frame-id lidar_nav_link (put in launch file)
+- ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap /cmd_vel:=/tri_cycle_controller/cmd_vel/unstamped
 - ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false (should work on PI) (QoS issue | Synchronization using chrony among all devices)
 - rviz2
