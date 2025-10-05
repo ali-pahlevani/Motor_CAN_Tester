@@ -6,3 +6,9 @@ Nodes:
 - ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap /cmd_vel:=/tri_cycle_controller/cmd_vel/unstamped
 - ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false (should work on PI) (QoS issue | Synchronization using chrony among all devices)
 - rviz2
+
+---
+
+Save the map:
+
+- ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap {name: {data: "test_map_1"}}
