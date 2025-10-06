@@ -17,7 +17,7 @@ tri_cycle_controller:
     odom_frame_id: odom
     enable_odom_tf: true
     
-    use_stamped_vel: true #(default: true)
+    use_stamped_vel: false #(default: true)
     open_loop: false
 
     traction_joint_name: "trac_joint"
