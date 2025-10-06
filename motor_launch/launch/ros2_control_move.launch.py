@@ -64,6 +64,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         robot_state_publisher_node,
-        delayed_controllers,
+        delayed_controllers
         #twist_stamper
     ])
