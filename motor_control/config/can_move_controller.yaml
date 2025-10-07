@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    #update_rate: 20
+    update_rate: 20
 
     tri_cycle_controller:
       type: tricycle_controller/TricycleController
