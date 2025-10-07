@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 50
+    #update_rate: 20
 
     tri_cycle_controller:
       type: tricycle_controller/TricycleController
@@ -11,7 +11,7 @@ controller_manager:
 tri_cycle_controller:
   ros__parameters:
 
-    publish_rate: 50.0
+    publish_rate: 20.0
 
     base_frame_id: base_link
     odom_frame_id: odom
@@ -47,6 +47,8 @@ tri_cycle_controller:
       #max_velocity: 1.4
       # min_acceleration: 0.0
       # max_acceleration: 1000.0
+
+    cmd_vel_timeout: 500
 
 joint_state_broadcaster:
   ros__parameters:

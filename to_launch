@@ -1,13 +1,35 @@
-Nodes:
+sudo ip link set can0 up type can bitrate 1000000
+sudo ifconfig can0 txqueuelen 65536
+sudo ifconfig can0 up
 
-- ros2 launch motor_launch ros2_control_move.launch.py (plus 6 service calls)
-- ros2 launch pf_driver r2000.launch.py (plus at least 1 service call for lidar frequency)
-- ros2 run tf2_ros static_transform_publisher --x 0.037 --y 0.0 --z 0.85 --qx 0.0 --qy 0.0 --qz 0.0 --qw 1.0 --frame-id base_link --child-frame-id lidar_nav_link (put in launch file)
-- ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap /cmd_vel:=/tri_cycle_controller/cmd_vel/unstamped
-- ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false (should work on PI) (QoS issue | Synchronization using chrony among all devices)
-- rviz2
+----------------------
+
+Terminals:
+
+- ~/autofork_ws (for launching and building) (RPi):
+  - bash ~/autofork_ws/startup_sequence.sh
+  - colcon build --symlink-install --packages-select motor_launch motor_control motor_description
+
+- ~/autofork_ws/Motor_CAN_Tester (for pulling changes) (RPi):
+  - git pull
+
+- ~ (localization) (PC):
+  - ros2 launch nav2_bringup localization_launch.py map:=/home/hustler/map_tests/test_map_1/test_map_1.yaml
+
+- ~ (navigation) (PC):
+  - ros2 launch nav2_bringup navigation_launch.py
+
+- ~ (rviz2) (PC):
+  - rviz2 (using the saved rviz config file)
+
+- ~ (manual control - for now, without stamped cmd_vel) (PC):
+  - ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap /cmd_vel:=/tri_cycle_controller/cmd_vel/unstamped
 
 ---
+
+For SLAM:
+
+- ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false (should work on PI) (QoS issue | Synchronization using chrony among all devices)
 
 Save the map:
 
