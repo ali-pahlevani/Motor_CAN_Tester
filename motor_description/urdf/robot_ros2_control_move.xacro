@@ -13,7 +13,7 @@
         <joint name="steer_joint">
             <command_interface name="position"/>
 
-            <state_interface name="velocity"/>
+            <!-- <state_interface name="velocity"/> -->
             <state_interface name="position"/>
 
             <param name="node_id">3</param>
@@ -24,7 +24,7 @@
             <command_interface name="velocity"/>
 
             <state_interface name="velocity"/>
-            <state_interface name="position"/>
+            <!-- <state_interface name="position"/> -->
 
             <param name="node_id">2</param>
             <param name="device_name">traction_motor</param>
