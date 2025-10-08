@@ -62,8 +62,38 @@ def generate_launch_description():
                     ('/cmd_vel_out','/tri_cycle_controller/cmd_vel')]
     )
 
+    # Include pf_driver launch file
+    pf_driver_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('pf_driver'),
+                'launch',
+                'r2000.launch.py'
+            )
+        )
+    )
+
+    # Static transform publisher for lidar_nav_link
+    static_transform_publisher = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=[
+            "--x", "0.037",
+            "--y", "0.0",
+            "--z", "0.75",
+            "--qx", "0.0",
+            "--qy", "0.0",
+            "--qz", "0.0",
+            "--qw", "1.0",
+            "--frame-id", "base_link",
+            "--child-frame-id", "lidar_nav_link"
+        ]
+    )
+
     return LaunchDescription([
         robot_state_publisher_node,
-        delayed_controllers
-        #twist_stamper
+        delayed_controllers,
+        #twist_stamper,
+        pf_driver_launch,
+        static_transform_publisher
     ])
