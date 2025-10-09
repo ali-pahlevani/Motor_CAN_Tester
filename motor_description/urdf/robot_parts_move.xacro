@@ -20,6 +20,25 @@
     </collision>
   </link>
 
+  <!-- LiDAR link -->
+  <link name="lidar_nav_link">
+    <visual>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
   <!-- Shaft (vertical cylinder) -->
   <link name="shaft">
     <visual>
@@ -66,6 +85,13 @@
       <inertia ixx="0.001" iyy="0.001" izz="0.0008" ixy="0" ixz="0" iyz="0"/>
     </inertial>
   </link>
+
+  <!-- Fixed joint: base_link ↔ lidar -->
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_nav_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
 
   <!-- Revolute joint: base_link ↔ shaft (steering) -->
   <joint name="steer_joint" type="revolute">
