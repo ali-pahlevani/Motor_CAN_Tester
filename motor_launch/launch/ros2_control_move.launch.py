@@ -79,7 +79,8 @@ def generate_launch_description():
             os.path.join(
                 get_package_share_directory('sick_safetyscanners2'),
                 'launch',
-                'sick_safetyscanners2_launch.py'
+                #'sick_safetyscanners2_launch.py'
+                'sick_safetyscanners2_lifecycle_launch.py'
             )
         )
     )
