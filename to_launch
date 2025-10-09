@@ -34,3 +34,88 @@ For SLAM:
 Save the map:
 
 - ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap {name: {data: "test_map_1"}}
+
+
+
+---------
+
+Prev bash file:
+
+#!/bin/bash
+
+# Script to run ROS2 motor control, services, driver, and TF publisher in sequence
+# All commands run in background with suppressed output
+# Ctrl+C triggers cleanup of all background processes
+# Usage: bash startup_sequence.sh
+# Make it executable: chmod +x startup_sequence.sh
+
+# Function to clean up background processes on Ctrl+C
+cleanup() {
+    echo ""
+    echo "=== Closing ROS2 Sequence ==="
+    # Kill all background processes started by this script
+    kill $(jobs -p) 2>/dev/null
+    exit 0
+}
+
+# Trap Ctrl+C (SIGINT) and call cleanup function
+trap cleanup SIGINT
+
+# Source the ROS2 workspace (assuming script is in workspace root)
+cd ~/autofork_ws
+source install/setup.bash
+
+echo "=== Starting ROS2 Sequence (Workspace Sourced) ==="
+echo "All commands will run in background with no output shown. Press Ctrl+C to stop all processes."
+
+# 1. Launch motor control (backgrounded, suppressed output)
+echo "1. Launching motor control in background..."
+ros2 launch motor_launch ros2_control_move.launch.py > /dev/null 2>&1 &
+echo "Motor control launched. Waiting 8 seconds for initialization..."
+sleep 8
+
+# 2. Traction motor services (backgrounded, with 2s wait after each)
+echo "2. Calling traction motor services in background..."
+
+echo "   - NMT Start"
+ros2 service call /traction_motor/nmt_start_node std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+echo "   - Init"
+ros2 service call /traction_motor/init std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+echo "   - Velocity Mode"
+ros2 service call /traction_motor/velocity_mode std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+# 3. Position motor services (backgrounded, with 2s wait after each)
+echo "3. Calling position motor services in background..."
+
+echo "   - NMT Start"
+ros2 service call /steering_motor/nmt_start_node std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+echo "   - Init"
+ros2 service call /steering_motor/init std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+echo "   - Position Mode"
+ros2 service call /steering_motor/position_mode std_srvs/srv/Trigger "{}" > /dev/null 2>&1 &
+sleep 3
+
+# 4. Launch PF Driver (backgrounded, suppressed output)
+echo "4. Launching PF Driver (R2000) in background..."
+ros2 launch pf_driver r2000.launch.py > /dev/null 2>&1 &
+echo "PF Driver launched. Waiting 4 seconds for initialization..."
+sleep 4
+
+# 5. Static Transform Publisher (backgrounded, suppressed output)
+echo "5. Starting Static Transform Publisher in background..."
+ros2 run tf2_ros static_transform_publisher --x 0.037 --y 0.0 --z 0.75 --qx 0.0 --qy 0.0 --qz 0.0 --qw 1.0 --frame-id base_link --child-frame-id lidar_nav_link
+
+echo "=== Sequence Complete. All processes are running in the background silently. ==="
+echo "Press Ctrl+C to stop all processes."
+
+# Wait for Ctrl+C to keep the script running until interrupted
+wait

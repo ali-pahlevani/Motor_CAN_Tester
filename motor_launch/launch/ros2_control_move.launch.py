@@ -73,14 +73,32 @@ def generate_launch_description():
         )
     )
 
+    # Include sick_scanner_driver launch file
+    sick_scanner_driver_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('sick_safetyscanners2'),
+                'launch',
+                'sick_safetyscanners2_launch.py'
+            )
+        )
+    )
+
     # Static transform publisher for lidar_nav_link
     static_transform_publisher = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
         arguments=[
-            "--x", "0.037",
-            "--y", "0.0",
-            "--z", "0.75",
+            #"--x", "0.037",
+            #"--y", "0.0",
+            #"--z", "0.75",
+            #"--qx", "0.0",
+            #"--qy", "0.0",
+            #"--qz", "0.0",
+            #"--qw", "1.0",
+            "--x", "0.19",
+            "--y", "-0.30",
+            "--z", "0.01",
             "--qx", "0.0",
             "--qy", "0.0",
             "--qz", "0.0",
@@ -94,6 +112,7 @@ def generate_launch_description():
         robot_state_publisher_node,
         delayed_controllers,
         #twist_stamper,
-        pf_driver_launch,
+        #pf_driver_launch,
+        sick_scanner_driver_launch,
         static_transform_publisher
     ])
