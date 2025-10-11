@@ -113,7 +113,7 @@ def generate_launch_description():
         robot_state_publisher_node,
         delayed_controllers,
         #twist_stamper,
-        #pf_driver_launch,
-        sick_scanner_driver_launch,
+        pf_driver_launch,
+        #sick_scanner_driver_launch,
         #static_transform_publisher
     ])

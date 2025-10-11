@@ -90,8 +90,8 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="lidar_nav_link"/>
-    <!-- <origin xyz="1.027 0 0.779" rpy="0 0 3.1416"/> z = 0.874 -->
-    <origin xyz="1.027 0 0.779" rpy="0 0 3.1416"/>
+    <origin xyz="1.027 0 0.779" rpy="0 0 3.1416"/> <!--z = 0.874 navigation -->
+    <!-- <origin xyz="... ... ..." rpy="0 0 3.1416"/> safety -->
   </joint>
 
   <!-- Revolute joint: base_link ↔ shaft (steering) -->
