@@ -10,7 +10,7 @@ master:
   boot_time: 500  # Timeout for booting mandatory slaves in ms
 
 steering_motor:
-  node_id: 3
+  node_id: 4
   dcf: "Kinco_FD_20250417_V1.2.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
@@ -20,12 +20,12 @@ steering_motor:
   polling: false
 
   # fork positioning
-  #scale_pos_to_dev: 13986013.9860 #(increments per meter) | old: 2607.5946
-  #scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
+  scale_pos_to_dev: 13986013.9860 #(increments per meter) | old: 2607.5946
+  scale_pos_from_dev: 0.0000000715 #(meters per increment) | old: 0.0003835
 
   # steering wheel positioning
-  scale_pos_to_dev: 3271863.6623 #292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
-  scale_pos_from_dev: 0.000000306 #0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
+  #scale_pos_to_dev: 3271863.6623 #292845.0953 # ≈ 1,840,000 / (2π) | old: 2607.5946
+  #scale_pos_from_dev: 0.000000306 #0.0000034148 # ≈ (2π) / 1,840,000 | old: 0.0003835
 
   scale_vel_to_dev: 26075.946
   scale_vel_from_dev: 0.00003835
@@ -34,13 +34,13 @@ steering_motor:
     - {index: 0x6040, sub_index: 0, value: 128}   # Reset fault
     - {index: 0x1017, sub_index: 0, value: 1000}  # Enable heartbeats every 1000 ms
     - {index: 0x6060, sub_index: 0, value: 1}     # Profile Position Mode
-    - {index: 0x6081, sub_index: 0, value: 26876476} # Profile velocity (~ 1500 RPM) (wheel's motor)
-    #- {index: 0x6081, sub_index: 0, value: 2730650} # Profile velocity (~ 1000 RPM) (forks' motor)
+    #- {index: 0x6081, sub_index: 0, value: 26876476} # Profile velocity (~ 1500 RPM) (wheel's motor)
+    - {index: 0x6081, sub_index: 0, value: 2730650} # Profile velocity (~ 1000 RPM) (forks' motor)
     - {index: 0x6098, sub_index: 0, value: 1}     # Homing method
-    - {index: 0x6083, sub_index: 0, value: 30000}   # Set acceleration (200)
-    - {index: 0x6084, sub_index: 0, value: 60000}   # Set deceleration (500)
-    #- {index: 0x6083, sub_index: 0, value: 200}   # Set acceleration (forks)
-    #- {index: 0x6084, sub_index: 0, value: 500}   # Set deceleration (forks)
+    #- {index: 0x6083, sub_index: 0, value: 30000}   # Set acceleration (200)
+    #- {index: 0x6084, sub_index: 0, value: 60000}   # Set deceleration (500)
+    - {index: 0x6083, sub_index: 0, value: 200}   # Set acceleration (forks)
+    - {index: 0x6084, sub_index: 0, value: 500}   # Set deceleration (forks)
     - {index: 0x6085, sub_index: 0, value: 50}    # Set quickstop deceleration
     - {index: 0x6040, sub_index: 0, value: 6}     # Shutdown
     - {index: 0x6040, sub_index: 0, value: 7}     # Switch On
