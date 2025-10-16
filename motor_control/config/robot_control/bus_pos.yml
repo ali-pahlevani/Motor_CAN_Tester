@@ -35,7 +35,8 @@ steering_motor:
     - {index: 0x1017, sub_index: 0, value: 1000}  # Enable heartbeats every 1000 ms
     - {index: 0x6060, sub_index: 0, value: 1}     # Profile Position Mode
     #- {index: 0x6081, sub_index: 0, value: 26876476} # Profile velocity (~ 1500 RPM) (wheel's motor)
-    - {index: 0x6081, sub_index: 0, value: 2730650} # Profile velocity (~ 1000 RPM) (forks' motor)
+    #- {index: 0x6081, sub_index: 0, value: 2730650} # Profile velocity (~ 1000 RPM) (forks' motor) (prev)
+    - {index: 0x6081, sub_index: 0, value: 4095975} # Profile velocity (~ 1500 RPM) (forks' motor)
     - {index: 0x6098, sub_index: 0, value: 1}     # Homing method
     #- {index: 0x6083, sub_index: 0, value: 30000}   # Set acceleration (200) (wheel)
     #- {index: 0x6084, sub_index: 0, value: 60000}   # Set deceleration (500) (wheel)
