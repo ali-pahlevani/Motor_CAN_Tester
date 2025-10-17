@@ -19,7 +19,7 @@ find_package(lely_core_libraries REQUIRED)
 
 #cogen_dcf(robot_control)
 
-# Install config files
+# Install config, encoder, and scripts files
 install(
   DIRECTORY config encoder scripts
   DESTINATION share/${PROJECT_NAME}
@@ -27,6 +27,7 @@ install(
 
 # Install Python executables
 install(PROGRAMS
+  scripts/fork_bias_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
