@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<robot name="steerable_wheel_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Base link (cube) -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 1.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.4 0.2"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 1.15" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.4 0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LiDAR link -->
+  <link name="lidar_nav_link">
+    <visual>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Forks link -->
+  <link name="forks_link">
+    <visual>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.037 0 0.9" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.1" length="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Shaft (vertical cylinder) -->
+  <link name="shaft">
+    <visual>
+      <origin xyz="0 0 0.65" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="1.0"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.65" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="1.0"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="0 0 0.65" rpy="0 0 0"/>
+      <inertia ixx="0.05" iyy="0.05" izz="0.001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Wheel (horizontal cylinder) -->
+  <link name="wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.124" length="0.08"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.124" length="0.08"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" iyy="0.001" izz="0.0008" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Fixed joint: base_link ↔ lidar -->
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_nav_link"/>
+    <origin xyz="1.027 0 0.779" rpy="0 0 3.1416"/> <!--z = 0.874 navigation -->
+    <!-- <origin xyz="... ... ..." rpy="0 0 3.1416"/> safety -->
+  </joint>
+
+  <!-- Revolute joint: base_link ↔ shaft (steering) -->
+  <joint name="steer_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="shaft"/>
+    <origin xyz="0.99 -0.0055 0.154" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5708" upper="1.5708" velocity="1.4" effort="200"/>
+  </joint>
+
+  <!-- Continuous joint: shaft ↔ wheel (traction) -->
+  <joint name="trac_joint" type="continuous">
+    <parent link="shaft"/>
+    <child link="wheel"/>
+    <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- forks joint -->
+  <joint name="forks_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="forks_link"/>
+    <origin xyz="-0.2 0 0.05" rpy="0 0 3.1416"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.20" velocity="10" effort="1000"/>
+  </joint>
+
+</robot>

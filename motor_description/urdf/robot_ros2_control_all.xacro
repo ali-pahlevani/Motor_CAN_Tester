@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <ros2_control name="RealRobot" type="system">
+        <hardware>
+            <plugin>canopen_ros2_control/Cia402System</plugin>
+
+            <param name="bus_config">$(find motor_control)/config/robot_control/bus_all.yml</param>
+            <param name="master_config">$(find motor_control)/config/robot_control/master.dcf</param>
+            <param name="can_interface_name">can0</param>
+            <param name="master_bin"></param>
+        </hardware>
+
+        <joint name="trac_joint">
+            <command_interface name="velocity"/>
+
+            <state_interface name="velocity"/>
+            <!-- <state_interface name="position"/> -->
+
+            <param name="node_id">2</param>
+            <param name="device_name">traction_motor</param>
+        </joint>
+
+        <joint name="steer_joint">
+            <command_interface name="position"/>
+
+            <!-- <state_interface name="velocity"/> -->
+            <state_interface name="position"/>
+
+            <param name="node_id">3</param>
+            <param name="device_name">steering_motor</param>
+        </joint>
+
+        <joint name="forks_joint">
+            <command_interface name="position"/>
+
+            <!-- <state_interface name="velocity"/> -->
+            <state_interface name="position"/>
+
+            <param name="node_id">4</param>
+            <param name="device_name">forks_motor</param>
+        </joint>
+
+    </ros2_control>
+</robot>
