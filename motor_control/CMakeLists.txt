@@ -21,7 +21,7 @@ find_package(lely_core_libraries REQUIRED)
 
 # Install config files
 install(
-  DIRECTORY config
+  DIRECTORY config encoder
   DESTINATION share/${PROJECT_NAME}
 )
 
