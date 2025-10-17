@@ -20,9 +20,12 @@ class ForkBiasNode(Node):
             rclpy.shutdown()
             return
         
-        # Load initial height_bias from YAML
+        # Load initial height_bias from YAML (used consistently during runtime)
         self.height_bias = 0.0
         self.load_bias()
+        
+        # Store the fixed bias loaded at startup
+        self.fixed_bias = self.height_bias
         
         # Current raw position storage
         self.current_raw_position = 0.0
@@ -38,7 +41,7 @@ class ForkBiasNode(Node):
         # Publisher to /forks_abs_height (Float64, only position)
         self.publisher = self.create_publisher(Float64, '/forks_abs_height', 10)
         
-        # Timer to periodically save the current absolute height as bias (every 5 seconds)
+        # Timer to periodically save current absolute height as bias (every 5 seconds)
         self.timer = self.create_timer(5.0, self.save_bias)
 
     def load_bias(self):
@@ -59,8 +62,8 @@ class ForkBiasNode(Node):
 
     def save_bias(self):
         # Calculate current absolute height
-        current_abs = self.current_raw_position + self.height_bias
-        data = {'height_bias': current_abs}
+        current_abs = self.current_raw_position + self.fixed_bias
+        data = [{'height_bias': current_abs}]  # Save as list to match original format
         try:
             with open(self.yaml_path, 'w') as file:
                 yaml.dump(data, file)
@@ -74,8 +77,8 @@ class ForkBiasNode(Node):
             index = msg.name.index('forks_joint')
             self.current_raw_position = msg.position[index]
             
-            # Calculate absolute height
-            abs_height = self.current_raw_position + self.height_bias
+            # Calculate absolute height using fixed_bias (set at startup)
+            abs_height = self.current_raw_position + self.fixed_bias
             
             # Publish to /forks_abs_height
             abs_msg = Float64()
@@ -83,6 +86,11 @@ class ForkBiasNode(Node):
             self.publisher.publish(abs_msg)
         except ValueError:
             self.get_logger().warn('forks_joint not found in /joint_states')
+
+    def shutdown(self):
+        # Save the final absolute height as bias on shutdown
+        self.save_bias()
+        super().shutdown()
 
 def main(args=None):
     rclpy.init(args=args)
@@ -92,8 +100,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
     finally:
-        # Save bias on shutdown
-        node.save_bias()
+        node.shutdown()
         node.destroy_node()
         rclpy.shutdown()
 
