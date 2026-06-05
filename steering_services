@@ -1,5 +1,5 @@
 
-belev@raspberrypi:~/autofork_ws$ ros2 service list
+belev@raspberrypi:~/Motor_CAN_Tester$ ros2 service list
 /controller_manager/configure_controller
 /controller_manager/describe_parameters
 /controller_manager/get_parameter_types

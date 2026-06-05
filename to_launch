@@ -6,11 +6,11 @@ sudo ifconfig can0 up
 
 Terminals:
 
-- ~/autofork_ws (for launching and building) (RPi):
-  - bash ~/autofork_ws/startup_sequence.sh
+- ~/Motor_CAN_Tester (for launching and building) (RPi):
+  - bash ~/Motor_CAN_Tester/startup_sequence.sh
   - colcon build --symlink-install --packages-select motor_launch motor_control motor_description
 
-- ~/autofork_ws/Motor_CAN_Tester (for pulling changes) (RPi):
+- ~/Motor_CAN_Tester/Motor_CAN_Tester (for pulling changes) (RPi):
   - git pull
 
 - ~ (localization) (PC):
@@ -62,7 +62,7 @@ cleanup() {
 trap cleanup SIGINT
 
 # Source the ROS2 workspace (assuming script is in workspace root)
-cd ~/autofork_ws
+cd ~/Motor_CAN_Tester
 source install/setup.bash
 
 echo "=== Starting ROS2 Sequence (Workspace Sourced) ==="

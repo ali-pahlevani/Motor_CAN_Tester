@@ -484,7 +484,7 @@ AccessType=ro
 ParameterName=Node-ID 3
 DataType=0x000F
 AccessType=ro
-UploadFile=/home/belev/autofork_ws/install/motor_control/share/motor_control/config/robot_control/steering_motor.bin
+UploadFile=/home/belev/Motor_CAN_Tester/install/motor_control/share/motor_control/config/robot_control/steering_motor.bin
 
 [1F22sub4]
 ParameterName=Node-ID 4
