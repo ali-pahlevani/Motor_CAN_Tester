@@ -62,16 +62,16 @@ def generate_launch_description():
                     ('/cmd_vel_out','/tri_cycle_controller/cmd_vel')]
     )
 
-    # Include pf_driver launch file
-    pf_driver_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(
-                get_package_share_directory('pf_driver'),
-                'launch',
-                'r2000.launch.py'
-            )
-        )
-    )
+    # # Include pf_driver launch file
+    # pf_driver_launch = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         os.path.join(
+    #             get_package_share_directory('pf_driver'),
+    #             'launch',
+    #             'r2000.launch.py'
+    #         )
+    #     )
+    # )
 
     # Include sick_scanner_driver launch file
     sick_scanner_driver_launch = IncludeLaunchDescription(
@@ -113,7 +113,7 @@ def generate_launch_description():
         robot_state_publisher_node,
         delayed_controllers,
         #twist_stamper,
-        pf_driver_launch,
+        #pf_driver_launch,
         #sick_scanner_driver_launch,
         #static_transform_publisher
     ])
