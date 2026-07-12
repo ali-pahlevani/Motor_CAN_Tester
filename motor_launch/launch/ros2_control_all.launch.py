@@ -79,7 +79,7 @@ def generate_launch_description():
     #     )
     # )
 
-    # Include sick_scanner_driver launch file
+    # Include sick_scanner_driver launch file 
     sick_scanner_driver_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
